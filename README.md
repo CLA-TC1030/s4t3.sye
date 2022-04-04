@@ -21,7 +21,7 @@ classDiagram
       Game --> "1" Dado
       Game --> "1" Turno
       
-      Game:+getInput() string
+      Game:+getInput()* string
       Game:+start()
       Game:+endGame() bool
       GameAutomatic:+getInput() string
