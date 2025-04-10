@@ -19,12 +19,12 @@ protected:
 // Archivos de entrada/salida para el caso de configuracion de IO por archivos ---------
     std::ifstream fi{"input"};
     std::ofstream fo{"output"};
-
-    virtual std::string getInput()=0;    
+   
 public:
     static int turno;
     Game();
     Game(std::string);
+    virtual ~Game();
     void start();
     void outMsg(std::string);
     void setDadoAleatorio(bool swa);
@@ -32,4 +32,6 @@ public:
 
     // Método para imprimir la salida del juego si es por Archivo output
     void print();
+
+    virtual std::string getInput()=0; // Se hace público para facilitar las pruebas ...
 };

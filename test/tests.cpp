@@ -11,6 +11,7 @@
 #include "../CDado.hpp"
 #include "../GameManual.hpp"
 #include "../GameAutomatic.hpp"
+#include "../Game.hpp"
 #include "chkFiles.hpp"
 
 // Pruebas para casillas -----------------------------------------------------------
@@ -170,11 +171,15 @@ TEST_CASE("ex7", "[Dado no aleatorio-secuencial]")
 TEST_CASE("ex8", "[Ejecucion de Juego Manual]")
 {   
     SECTION( "Validando Ejecucion de Juego Manual" ) {
-        GameManual gm("t1.tab");
-        gm.setDadoAleatorio(false);
-        gm.setOutputToFile(true);
+        Game *gm = new GameManual("t1.tab");
 
-        gm.start();
+        gm->setDadoAleatorio(false);
+        gm->setOutputToFile(true);
+
+        gm->start();
+
+        delete gm;
+        
         REQUIRE(chkFiles("output", "test/toutput"));
     }
 }
@@ -182,11 +187,22 @@ TEST_CASE("ex8", "[Ejecucion de Juego Manual]")
 TEST_CASE("ex9", "[Ejecucion de Juego Automatico]")
 {   
     SECTION( "Validando Ejecucion de Juego Automatico" ) {
-        GameAutomatic ga("t1.tab");
-        ga.setDadoAleatorio(false);
-        ga.setOutputToFile(true);
+        Game *ga = new GameAutomatic("t1.tab");
 
-        ga.start();
+        ga->setDadoAleatorio(false);
+        ga->setOutputToFile(true);
+
+// Prueba que la entrada del juego es solo "C", no proviene ni del teclado, ni del archivo "input". Proviene del "Automata" imaginario ...
+        bool isC=true;
+        for (auto i=0; i<99; i++) 
+            if (ga->getInput() != "C")
+                isC=false;
+        
+        ga->start();
+
+        delete ga;
+            
+        REQUIRE(isC);   
         REQUIRE(chkFiles("output", "test/toutput"));
     }
 }
