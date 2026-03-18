@@ -4,6 +4,12 @@
 
 Esta tarea consiste en extender el Juego de Serpientes y Escaleras usando Sobrecarga de Operadores.
 
+<p align="center">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Snakes_%26_Ladder_puzzle_2.png/1280px-Snakes_%26_Ladder_puzzle_2.png"
+       alt="Tablero serpientes y escaleras (diseño colorido)"
+       width="300">
+</p>
+
 ## Ejemplo de Ejecución
 ```
 Probando lanzamientos del Dado No Aleatorio con sobrecarga en el operador + :
